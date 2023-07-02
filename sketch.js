@@ -247,7 +247,6 @@ function draw() {
 
       for( let i=0 ; i<cantidad ; i++){
         circulos[i].setColor( gestorPitch.filtrada );
-
       }
     }
     if( finDelSonido ){
@@ -264,7 +263,7 @@ function draw() {
   }
 
   else if (estado == "fin") {
-    cambiarTexto("Hablar para capturar la imagen");
+    cambiarTexto("Hablar para 'capturar' la imagen por 5 segundos");
     background(0);
 
     if (inicioElSonido) {
