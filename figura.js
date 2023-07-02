@@ -10,6 +10,7 @@ class Figura {
     this.color =('white');
 //rosa
     this.t = 400;
+    this.circulo1 = this.rosa;
     this.rosa = color (255,128,130,99);
 
     this.mov1=0;
@@ -26,6 +27,7 @@ class Figura {
     this.valY2=600;
 //celeste
 this.celeste = color (0,255,255,90);
+this.circulo2 = this.celeste;
     this.t2 = 300;
 
     this.modos2=0;
@@ -38,6 +40,7 @@ this.celeste = color (0,255,255,90);
     this.valY4=600;
 //amarillo  
 this.amarillo = color (238,232,170,60);
+this.circulo3 = this.celeste;
     this.t3 = 300;  
 
     this.modos3=0;
@@ -73,7 +76,7 @@ this.amarillo = color (238,232,170,60);
     noFill();
 
     push();
-    stroke(255,128,130,99);
+    stroke(this.rosa);
     ellipse(this.x, this.y, this.t, this.t);
     ellipse(this.x2, this.y2, this.t, this.t);
 
@@ -106,7 +109,7 @@ this.amarillo = color (238,232,170,60);
     dibujar2() {
 
   
-    stroke (0,255,255,90) ; 
+    stroke (this.celeste) ; 
 
     ellipse(this.x3, this.y3, this.t2, this.t2);
     ellipse(this.x4, this.y4, this.t2, this.t2);
@@ -140,7 +143,7 @@ this.amarillo = color (238,232,170,60);
   
   dibujar3(){
     
-    stroke(238,232,170,60);
+    stroke(this.amarillo);
 
     ellipse(this.x5, this.y5, this.t3, this.t3);
     
@@ -152,35 +155,6 @@ this.amarillo = color (238,232,170,60);
     this.x5 -= dx5;
 
   }
-
-  dibujar4() {
-    stroke('Crimson');
-
-    ellipse(this.x7, this.y7, this.t4, this.t4);
-    ellipse(this.x8, this.y8, this.t4, this.t4);
-
-    this.x7 = this.valX7;
-    this.y7 = this.valY7;
-    this.x8 = this.valX8;
-    this.y8 = this.valY8;
-
-    this.dir += this.rad;
-    let dx7 = this.vel * this.modo4(this.dir);
-    let dy7 = this.vel * cos(this.dir);
-
-    this.x7 += dx7;
-    this.y7 += dy7;
-
-    this.dir += this.rad;
-    let dx8 = this.vel *this.modo4(this.dir);
-    let dy8 = this.vel * cos(this.dir);
-
-    this.x8 += dx8;
-    this.y8 += dy8;
-  }
-
-
-
 
 
 
