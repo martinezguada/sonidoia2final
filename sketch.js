@@ -77,7 +77,7 @@ function draw() {
   background(0);
 
   if (estado == "agrega") {
-    cambiarTexto("Al detectar sonido se agregan los circulos");
+    cambiarTexto("Mantener sonido por 3 segs para agregar circulos");
     if (haySonido) {
       circulos[cantidad] = new Figura();
       cantidad++;
@@ -90,13 +90,13 @@ function draw() {
     }
 
     if (cantidad >= 30) {
-      estado = "movimiento";
+      estado = "fin";
     }
 
     if (!haySonido) {
       let ahora = millis();
       if (ahora > marcaEnElTiempo + tiempoLimiteAgrega && cantidad >= 10) {
-        estado = "movimiento";
+        estado = "fin";
         marcaEnElTiempo = millis();
         
       }
@@ -144,7 +144,7 @@ function draw() {
 
   //modos
   else if (estado == "modo1") {
-    cambiarTexto("Elegi entre los dos modos de los circulos 𝙧𝙤𝙨𝙖𝙨");
+    cambiarTexto("Elegi entre los modos de los circulos 𝙧𝙤𝙨𝙖𝙨");
     background(0);
     if (haySonido) {
       for (let i = 0; i < cantidad; i++) {
@@ -162,7 +162,7 @@ function draw() {
       }
     }
   } else if (estado == "modo2") {
-    cambiarTexto("Elegi entre los dos modos de los circulos 𝙘𝙚𝙡𝙚𝙨𝙩𝙚𝙨");
+    cambiarTexto("Elegi entre los modos de los circulos 𝙘𝙚𝙡𝙚𝙨𝙩𝙚𝙨");
     background(0);
     if (haySonido) {
       for (let i = 0; i < cantidad; i++) {
@@ -241,7 +241,7 @@ function draw() {
   
   }
   else if( estado == "color" ){
-    cambiarTexto("Cambiar color");
+    cambiarTexto("Al variar el pitch cambia el color entre los circulos");
     background(0);
     if( haySonido ){
 
@@ -263,7 +263,7 @@ function draw() {
   }
 
   else if (estado == "fin") {
-    cambiarTexto("Hablar para 'capturar' la imagen por 5 segundos");
+    cambiarTexto("Hablar para 'capturar' la imagen por 5 segundos. Luego se reiniciará.");
     background(0);
 
     if (inicioElSonido) {
