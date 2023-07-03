@@ -88,13 +88,13 @@ function draw() {
     }
 
     if (cantidad >= 30) {
-      estado = "fin";
+      estado = "movimiento";
     }
 
     if (!haySonido) {
       let ahora = millis();
       if (ahora > marcaEnElTiempo + tiempoLimiteAgrega && cantidad >= 10) {
-        estado = "fin";
+        estado = "movimiento";
         marcaEnElTiempo = millis();
       }
     }
@@ -121,7 +121,12 @@ function draw() {
     }
   } else if (estado == "movimiento2") {
     // cambiarTexto("Ahora los circulos 𝙘𝙚𝙡𝙚𝙨𝙩𝙚𝙨 cambian de lugar con el sonido");
-    insertarHTML("Ahora los circulos", "cambian de lugar con el sonido", "𝙘𝙚𝙡𝙚𝙨𝙩𝙚𝙨", "#34c9c7");
+    insertarHTML(
+      "Ahora los circulos",
+      "cambian de lugar con el sonido",
+      "𝙘𝙚𝙡𝙚𝙨𝙩𝙚𝙨",
+      "#34c9c7"
+    );
     background(0);
     if (haySonido) {
       for (let i = 0; i < cantidad; i++) {
@@ -143,7 +148,12 @@ function draw() {
   //modos
   else if (estado == "modo1") {
     // cambiarTexto("Elegi entre los modos de los circulos 𝙧𝙤𝙨𝙖𝙨");
-    insertarHTML("Elegi entre los modos de los circulos", " ", "𝙧𝙤𝙨𝙖𝙨", "#ff8082");
+    insertarHTML(
+      "Elegi entre los modos de los circulos",
+      " ",
+      "𝙧𝙤𝙨𝙖𝙨",
+      "#ff8082"
+    );
     background(0);
     if (haySonido) {
       for (let i = 0; i < cantidad; i++) {
@@ -162,7 +172,12 @@ function draw() {
     }
   } else if (estado == "modo2") {
     // cambiarTexto("Elegi entre los modos de los circulos 𝙘𝙚𝙡𝙚𝙨𝙩𝙚𝙨");
-    insertarHTML("Elegi entre los modos de los circulos", " ", "𝙘𝙚𝙡𝙚𝙨𝙩𝙚𝙨", "#34c9c7");
+    insertarHTML(
+      "Elegi entre los modos de los circulos",
+      " ",
+      "𝙘𝙚𝙡𝙚𝙨𝙩𝙚𝙨",
+      "#34c9c7"
+    );
     background(0);
     if (haySonido) {
       for (let i = 0; i < cantidad; i++) {
@@ -181,7 +196,12 @@ function draw() {
     }
   } else if (estado == "modo3") {
     // cambiarTexto("Elegi entre los modos del circulos 𝙖𝙢𝙖𝙧𝙞𝙡𝙡𝙤");
-    insertarHTML("Elegi entre los modos del circulo", " ", "𝙖𝙢𝙖𝙧𝙞𝙡𝙡𝙤", "#e0d23a");
+    insertarHTML(
+      "Elegi entre los modos del circulo",
+      " ",
+      "𝙖𝙢𝙖𝙧𝙞𝙡𝙡𝙤",
+      "#e0d23a"
+    );
     background(0);
     if (haySonido) {
       for (let i = 0; i < cantidad; i++) {
@@ -203,7 +223,12 @@ function draw() {
   //tamanos
   else if (estado == "tamano") {
     // cambiarTexto("Al variar el pitch cambia el tamaño de los circulos 𝙧𝙤𝙨𝙖𝙨");
-    insertarHTML("Al variar el pitch cambia el tamaño de los circulos", " ", "𝙧𝙤𝙨𝙖𝙨", "#ff8082");
+    insertarHTML(
+      "Al variar el pitch cambia el tamaño de los circulos",
+      " ",
+      "𝙧𝙤𝙨𝙖𝙨",
+      "#ff8082"
+    );
     background(0);
     if (haySonido) {
       for (let i = 0; i < cantidad; i++) {
@@ -222,7 +247,12 @@ function draw() {
     }
   } else if (estado == "tamano2") {
     // cambiarTexto("Al variar el pitch cambia el tamaño de los circulos 𝙘𝙚𝙡𝙚𝙨𝙩𝙚𝙨");
-    insertarHTML("Al variar el pitch cambia el tamaño de los circulos", " ", "𝙘𝙚𝙡𝙚𝙨𝙩𝙚𝙨", "#34c9c7");
+    insertarHTML(
+      "Al variar el pitch cambia el tamaño de los circulos",
+      " ",
+      "𝙘𝙚𝙡𝙚𝙨𝙩𝙚𝙨",
+      "#34c9c7"
+    );
     background(0);
     if (haySonido) {
       for (let i = 0; i < cantidad; i++) {
@@ -339,10 +369,10 @@ function cambiarTexto(texto) {
   elemento.textContent = texto;
 }
 
-// EJEMPLO1: El color está en el medio, paso como parámetro la primera y segunda parte del texto, luego el nombre del color y el color en Hexadecimal 
+// EJEMPLO1: El color está en el medio, paso como parámetro la primera y segunda parte del texto, luego el nombre del color y el color en Hexadecimal
 // insertarHTML("Ahora los circulos", "se mueven", "azules", "#013186")
 
-// EJEMPLO2: El color es la última palabra, entonces como segunda parte mando un string vacío, luego el nombre del color y el color en Hexadecimal 
+// EJEMPLO2: El color es la última palabra, entonces como segunda parte mando un string vacío, luego el nombre del color y el color en Hexadecimal
 // insertarHTML("Desaparecen todos los circulos color", " ", "azul", "#013186")
 
 function insertarHTML(texto1, texto2, textoColor, color) {
@@ -352,9 +382,8 @@ function insertarHTML(texto1, texto2, textoColor, color) {
   const html = `
     <span>${texto1}</span>
     <span style="color:${color}">${textoColor}</span>
-    ${texto2=== "" || texto2=== " "  ? '' : texto2}
+    ${texto2 === "" || texto2 === " " ? "" : texto2}
   `;
 
   elemento.innerHTML = html;
-
 }
