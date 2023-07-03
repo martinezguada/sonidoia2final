@@ -81,24 +81,21 @@ function draw() {
     if (haySonido) {
       circulos[cantidad] = new Figura();
       cantidad++;
-      
     }
 
     if (finDelSonido) {
       marcaEnElTiempo = millis();
-     
     }
 
     if (cantidad >= 30) {
-      estado = "fin";
+      estado = "movimiento";
     }
 
     if (!haySonido) {
       let ahora = millis();
       if (ahora > marcaEnElTiempo + tiempoLimiteAgrega && cantidad >= 10) {
-        estado = "fin";
+        estado = "movimiento";
         marcaEnElTiempo = millis();
-        
       }
     }
   }
@@ -238,32 +235,28 @@ function draw() {
         marcaEnElTiempo = millis();
       }
     }
-  
-  }
-  else if( estado == "color" ){
+  } else if (estado == "color") {
     cambiarTexto("Al variar el pitch cambia el color entre los circulos");
     background(0);
-    if( haySonido ){
-
-      for( let i=0 ; i<cantidad ; i++){
-        circulos[i].setColor( gestorPitch.filtrada );
+    if (haySonido) {
+      for (let i = 0; i < cantidad; i++) {
+        circulos[i].setColor(gestorPitch.filtrada);
       }
     }
-    if( finDelSonido ){
+    if (finDelSonido) {
       marcaEnElTiempo = millis();
     }
-    if( !haySonido ){
+    if (!haySonido) {
       let ahora = millis();
-      if( ahora > marcaEnElTiempo+tiempoLimiteEstado ){
-          estado = "fin";
-          marcaEnElTiempo = millis();
+      if (ahora > marcaEnElTiempo + tiempoLimiteEstado) {
+        estado = "fin";
+        marcaEnElTiempo = millis();
       }
     }
-
-  }
-
-  else if (estado == "fin") {
-    cambiarTexto("Hablar para 'capturar' la imagen por 5 segundos. Luego se reiniciará.");
+  } else if (estado == "fin") {
+    cambiarTexto(
+      "Hablar para 'capturar' la imagen por 5 segundos. Luego se reiniciará."
+    );
     background(0);
 
     if (inicioElSonido) {
@@ -276,10 +269,10 @@ function draw() {
         marcaEnElTiempo = millis();
         noLoop();
         // Activar el ciclo de dibujo nuevamente después de 5 segundos
-        setTimeout(function() {
-          (estado == "reinicio");
-          loop()}, 5000);
-  
+        setTimeout(function () {
+          estado == "reinicio";
+          loop();
+        }, 5000);
       }
     }
   } else if (estado == "reinicio") {
@@ -295,10 +288,9 @@ function draw() {
   }
 
   for (let i = 0; i < cantidad; i++) {
-      circulos[i].dibujar();
-      circulos[i].dibujar2();
-      circulos[i].dibujar3();
-  
+    circulos[i].dibujar();
+    circulos[i].dibujar2();
+    circulos[i].dibujar3();
   }
 
   //if( monitorear ){
@@ -327,7 +319,7 @@ function getPitch() {
   pitch.getPitch(function (err, frequency) {
     if (frequency) {
       let midiNum = freqToMidi(frequency);
-      console.log( midiNum );
+      console.log(midiNum);
 
       gestorPitch.actualizar(midiNum);
     }
